@@ -1,0 +1,32 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.title-span {
+  font-weight: bold;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100% !important;
+  transition: top 0.3s;
+}
+
+.example-card {
+  width: 25vw;
+  padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-div {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
