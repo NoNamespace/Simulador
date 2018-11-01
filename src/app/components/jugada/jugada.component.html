@@ -7,38 +7,40 @@
 
   <mat-card class="example-card">
     <div class="example-container">
-      <h1>Ronda {{rondaActual}}</h1>
+      <h1>Ronda {{rondaActual}} de {{dataService.nRondas}}</h1>
     </div>
     <div class="fields">
       <h3>Precio de compra de materia prima del mercado: {{cmpMercado}}</h3>
       <h3>Precio de venta de producto del mercado: {{vpMercado}}</h3>
       <mat-tab-group class="grupoTabs">
-        <mat-tab *ngFor="let grupo of nGrupos" label="Grupo {{grupo.idjugada + 1}}">
+        <mat-tab *ngFor="let jugada of jugadas" label="Grupo {{jugada.idjugada + 1}}">
           <mat-grid-list [cols]="8" rowHeight="400px">
             <mat-grid-tile [colspan]="3">
               <div class="tab">
                 <div class="textbox">
-                  <h4>Compra de materia prima: {{compraMP}}</h4>
-                  <mat-slider [min]="2" [max]="4" [thumbLabel]="true" [step]="1" [(ngModel)]="compraMP"></mat-slider>
+                  <h4>Compra de materia prima: {{jugada.compraMP}}</h4>
+                  <mat-slider [min]="0" [max]="jugada.maxCMP" [thumbLabel]="true" [step]="1" [(ngModel)]="jugada.compraMP" [disabled]="jugada.disableCMP"></mat-slider>
                 </div>
                 <div class="textbox">
-                  <h4>Venta de producto: {{ventaP}}</h4>
-                  <mat-slider [min]="2" [max]="4" [thumbLabel]="true" [step]="1" [(ngModel)]="ventaP"></mat-slider>
+                  <h4>Venta de producto: {{jugada.ventaP}}</h4>
+                  <mat-slider [min]="0" [max]="jugada.maxVP" [thumbLabel]="true" [step]="1" [(ngModel)]="jugada.ventaP" [disabled]="jugada.disableVP"></mat-slider>
                 </div>
               </div>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="5">
               <div class="tab">
-                <h5>Total costo compra de materia prima: {{totalCostoMP}}</h5>
-                <h5>Total ingreso venta de producto: {{totalIngresoVP}}</h5>
-                <h5>Subtotal ronda: {{totalIngresoVP - totalCostoMP}}</h5>
-                <h5>Subtotal inventario: {{inventarioNuevo}}</h5>
+                <h5>Saldo actual: {{jugada.saldo}}</h5>
+                <h5>Inventario actual: {{jugada.inventarioActual}}</h5>
+                <h5>Total costo compra de materia prima: {{jugada.compraMP * cmpMercado}}</h5>
+                <h5>Total ingreso venta de producto: {{jugada.ventaP * vpMercado}}</h5>
+                <h5>Subtotal ronda: {{(jugada.ventaP * vpMercado) - (jugada.compraMP * cmpMercado) + jugada.saldo}}</h5>
+                <h5>Nuevo inventario: {{jugada.inventarioActual + (jugada.compraMP * dataService.productosPorMP) - jugada.ventaP}}</h5>
               </div>
             </mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
       </mat-tab-group>
     </div>
-    <button mat-raised-button color="primary" routerLink="{{nextView}}" (click)="siguienteRonda()">Finalizar ronda</button>
+    <button mat-raised-button color="primary" (click)="siguienteRondaTry()">Finalizar ronda</button>
   </mat-card>
 </div>

@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Jugada} from '../../model/jugada';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-resultados',
@@ -7,11 +9,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ResultadosComponent implements OnInit {
 
-  resultados: number[] = [
-    1, 2, 3, 4
-  ];
+  ultimasJugadas: Jugada[];
+  ultimoPP: number;
 
-  constructor() {
+  constructor(private dataService: DataService) {
+    this.ultimasJugadas = this.dataService.rondas[this.dataService.nRondas - 1].jugadas;
+    this.ultimoPP = this.dataService.rondas[this.dataService.nRondas - 1].pp;
   }
 
   ngOnInit() {

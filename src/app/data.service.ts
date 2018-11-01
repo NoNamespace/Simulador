@@ -15,7 +15,6 @@ export class DataService {
   private _rondas: Ronda[] = [];
   private _inventarioInicial = 4;
   private _productosPorMP = 4;
-  private _saldo = 0;
 
   constructor() {
   }
@@ -32,8 +31,15 @@ export class DataService {
       }
       ronda.jugadas.forEach((jugada, j) => {
         jugada.idjugada = j;
+        jugada.saldo = 0;
+        jugada.inventarioActual = this._inventarioInicial;
       });
     });
+  }
+
+  resetRondas() {
+    this._rondas = [];
+    this._rondaActual = 1;
   }
 
   get rondaActual(): number {
@@ -90,13 +96,5 @@ export class DataService {
 
   set productosPorMP(value: number) {
     this._productosPorMP = value;
-  }
-
-  get saldo(): number {
-    return this._saldo;
-  }
-
-  set saldo(value: number) {
-    this._saldo = value;
   }
 }

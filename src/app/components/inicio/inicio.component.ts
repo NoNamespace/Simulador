@@ -16,6 +16,11 @@ export class InicioComponent implements OnInit {
   private _productosPorMP;
 
   constructor(public dataService: DataService, private router: Router) {
+    if (this.dataService.isLogged === false) {
+      this.router.navigateByUrl('/login');
+    } else {
+      dataService.resetRondas();
+    }
   }
 
   ngOnInit() {

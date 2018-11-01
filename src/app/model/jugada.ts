@@ -1,6 +1,12 @@
 export class Jugada {
   idjugada: number;
-  propuestacompra: number;
-  propuestaventa: number;
-  utilidad: number;
+  compraMP: number;
+  ventaP: number;
+  inventarioActual: number;
+  saldo: number;
+  maxCMP: number;
+  maxVP: number;
+  disableCMP: boolean;
+  disableVP: boolean;
+  saldoResultante: number;
 }

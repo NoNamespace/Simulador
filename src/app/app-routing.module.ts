@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'jugada', component: JugadaComponent},
-  {path: 'resultados', component: ResultadosComponent}
+  {path: 'resultados', component: ResultadosComponent},
+  {path: '**', redirectTo: '/inicio'}
 ];
 
 @NgModule({
