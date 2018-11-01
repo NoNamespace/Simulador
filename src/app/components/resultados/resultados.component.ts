@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-resultados',
@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadosComponent implements OnInit {
 
-  constructor() { }
+  resultados: number[] = [
+    1, 2, 3, 4
+  ];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

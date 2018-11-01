@@ -1,22 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { InicioComponent } from './inicio/inicio.component';
-import { ResultadosComponent } from './resultados/resultados.component';
-import { JugadaComponent } from './jugada/jugada.component';
-import { LoginComponent } from './login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {InicioComponent} from './components/inicio/inicio.component';
+import {ResultadosComponent} from './components/resultados/resultados.component';
+import {JugadaComponent} from './components/jugada/jugada.component';
+import {LoginComponent} from './components/login/login.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { MatFormFieldModule, MatSelectModule, MatInputModule, MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule} from '@angular/material';
+import {
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatToolbarModule,
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule,
+  MatSliderModule, MatTabsModule, MatGridListModule, MatListModule
+} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {AppComponent} from './components/app/app.component';
+import {DataService} from './data.service';
 
 @NgModule({
   declarations: [
     InicioComponent,
     ResultadosComponent,
     JugadaComponent,
-    LoginComponent
+    LoginComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +41,16 @@ import { MatFormFieldModule, MatSelectModule, MatInputModule, MatToolbarModule, 
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSliderModule,
+    FormsModule,
+    MatTabsModule,
+    MatGridListModule,
+    MatListModule,
+    MatSliderModule
   ],
-  providers: [],
-  bootstrap: [LoginComponent]
+  providers: [DataService],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

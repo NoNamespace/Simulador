@@ -13,6 +13,19 @@
   width: 100% !important;
 }
 
-.title-span{
+.title-span {
   font-weight: bold;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-card {
+  width: 25vw;
+  padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
