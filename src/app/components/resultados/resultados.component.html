@@ -11,10 +11,13 @@
     </div>
     <div class="fields">
       <mat-list>
-        <mat-list-item *ngFor="let ultimaJugada of ultimasJugadas">
-          <h5>Grupo: {{ultimaJugada.idjugada + 1}} | Inventario: {{ultimaJugada.inventarioActual + ultimaJugada.compraMP *
-            dataService.productosPorMP}} | Utilidad: {{ultimaJugada.saldoResultante}} | Valor inventario:
-            {{(ultimaJugada.inventarioActual + ultimaJugada.compraMP * dataService.productosPorMP) * ultimoPP}}</h5>
+        <mat-list-item *ngFor="let ultimaJugada of ultimasJugadas" class="itemCard">
+          <mat-card class="cardGrupo">
+            <mat-card-title>Grupo {{ultimaJugada.idjugada + 1}}</mat-card-title>
+            Inventario: {{ultimaJugada.inventarioActual + ultimaJugada.compraMP * dataService.productosPorMP}} producto(s)<br>
+            Utilidad: S/.{{ultimaJugada.saldoResultante}}<br>
+            Valor inventario: S/.{{(ultimaJugada.inventarioActual + ultimaJugada.compraMP * dataService.productosPorMP) * ultimoPP}}
+          </mat-card>
         </mat-list-item>
       </mat-list>
     </div>

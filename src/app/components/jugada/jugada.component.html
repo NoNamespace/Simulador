@@ -10,31 +10,31 @@
       <h1>Ronda {{rondaActual}} de {{dataService.nRondas}}</h1>
     </div>
     <div class="fields">
-      <h3>Precio de compra de materia prima del mercado: {{cmpMercado}}</h3>
-      <h3>Precio de venta de producto del mercado: {{vpMercado}}</h3>
+      <h3>Precio de compra de materia prima del mercado: S/.{{cmpMercado}}</h3>
+      <h3>Precio de venta de producto del mercado: S/.{{vpMercado}}</h3>
       <mat-tab-group class="grupoTabs">
         <mat-tab *ngFor="let jugada of jugadas" label="Grupo {{jugada.idjugada + 1}}">
           <mat-grid-list [cols]="8" rowHeight="400px">
             <mat-grid-tile [colspan]="3">
               <div class="tab">
                 <div class="textbox">
-                  <h4>Compra de materia prima: {{jugada.compraMP}}</h4>
+                  <h4>Compra de materia prima: {{jugada.compraMP}} MP(s)</h4>
                   <mat-slider [min]="0" [max]="jugada.maxCMP" [thumbLabel]="true" [step]="1" [(ngModel)]="jugada.compraMP" [disabled]="jugada.disableCMP"></mat-slider>
                 </div>
                 <div class="textbox">
-                  <h4>Venta de producto: {{jugada.ventaP}}</h4>
+                  <h4>Venta de producto: {{jugada.ventaP}} producto(s)</h4>
                   <mat-slider [min]="0" [max]="jugada.maxVP" [thumbLabel]="true" [step]="1" [(ngModel)]="jugada.ventaP" [disabled]="jugada.disableVP"></mat-slider>
                 </div>
               </div>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="5">
               <div class="tab">
-                <h5>Saldo actual: {{jugada.saldo}}</h5>
-                <h5>Inventario actual: {{jugada.inventarioActual}}</h5>
-                <h5>Total costo compra de materia prima: {{jugada.compraMP * cmpMercado}}</h5>
-                <h5>Total ingreso venta de producto: {{jugada.ventaP * vpMercado}}</h5>
-                <h5>Subtotal ronda: {{(jugada.ventaP * vpMercado) - (jugada.compraMP * cmpMercado) + jugada.saldo}}</h5>
-                <h5>Nuevo inventario: {{jugada.inventarioActual + (jugada.compraMP * dataService.productosPorMP) - jugada.ventaP}}</h5>
+                <h5>Saldo actual: S/.{{jugada.saldo}}</h5>
+                <h5>Inventario actual: {{jugada.inventarioActual}} producto(s)</h5>
+                <h5>Total costo compra de materia prima: S/.{{jugada.compraMP * cmpMercado}}</h5>
+                <h5>Total ingreso venta de producto: S/.{{jugada.ventaP * vpMercado}}</h5>
+                <h5>Subtotal ronda: S/.{{(jugada.ventaP * vpMercado) - (jugada.compraMP * cmpMercado) + jugada.saldo}}</h5>
+                <h5>Nuevo inventario: {{jugada.inventarioActual + (jugada.compraMP * dataService.productosPorMP) - jugada.ventaP}} producto(s)</h5>
               </div>
             </mat-grid-tile>
           </mat-grid-list>
